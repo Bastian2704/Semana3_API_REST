@@ -1,0 +1,976 @@
+{
+    "item": [
+        {
+            "name": "enrollments",
+            "description": "",
+            "item": [
+                {
+                    "id": "493a9470-a885-4263-bb50-c54ab1278a96",
+                    "name": "Crear una matrícula",
+                    "request": {
+                        "name": "Crear una matrícula",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "enrollments"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"studentId\": \"S-10245\",\n  \"programId\": \"P-ISW\",\n  \"termId\": \"2026-2\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\",\n    \"MATZ1105\"\n  ]\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "f0441b22-2595-4302-9f65-260cffa7daed",
+                            "name": "Matrícula creada",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "enrollments"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"studentId\": \"S-10245\",\n  \"programId\": \"P-ISW\",\n  \"termId\": \"2026-2\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\",\n    \"MATZ1105\"\n  ]\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"E-2026-00123\",\n  \"studentId\": \"S-10245\",\n  \"programId\": \"P-ISW\",\n  \"termId\": \"2026-2\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\",\n    \"MATZ1105\"\n  ],\n  \"status\": \"PENDING\",\n  \"createdAt\": \"2026-10-29T14:30:00Z\",\n  \"updatedAt\": \"2026-10-29T14:30:00Z\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "ec53c405-d455-4b32-9d63-573e554c22c4",
+                            "name": "Datos inválidos",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "enrollments"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"studentId\": \"S-10245\",\n  \"programId\": \"P-ISW\",\n  \"termId\": \"2026-2\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\",\n    \"MATZ1105\"\n  ]\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"code\": \"VALIDATION_ERROR\",\n  \"message\": \"Field studentId is required\",\n  \"correlationId\": \"ab23f8b1-91c2-45dc\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "8e5f9fa7-9dee-469d-a2a1-63226e3606c1",
+                            "name": "El estudiante ya está matriculado en el periodo",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "enrollments"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"studentId\": \"S-10245\",\n  \"programId\": \"P-ISW\",\n  \"termId\": \"2026-2\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\",\n    \"MATZ1105\"\n  ]\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Conflict",
+                            "code": 409,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"code\": \"ALREADY_ENROLLED\",\n  \"message\": \"Student S-10245 already has an enrollment in term 2026-2\",\n  \"correlationId\": \"ab23f8b1-91c2-45dc\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "9a6d2147-44c7-4b9f-8603-1b777272a919",
+                            "name": "Falla inesperada del servicio",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "enrollments"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"studentId\": \"S-10245\",\n  \"programId\": \"P-ISW\",\n  \"termId\": \"2026-2\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\",\n    \"MATZ1105\"\n  ]\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"code\": \"INTERNAL_ERROR\",\n  \"message\": \"An unexpected error occurred\",\n  \"correlationId\": \"ab23f8b1-91c2-45dc\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "0b9fc298-c455-4c30-8aa4-b77ea0b5f222",
+                    "name": "Buscar matrículas",
+                    "request": {
+                        "name": "Buscar matrículas",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "enrollments"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "studentId",
+                                    "value": "S-10245"
+                                },
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "termId",
+                                    "value": "2026-2"
+                                },
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "status",
+                                    "value": "PENDING"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "98cbe29d-4891-4cd4-9335-24d671433846",
+                            "name": "Lista de matrículas (vacía si no hay coincidencias)",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "enrollments"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "studentId",
+                                            "value": "S-10245"
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "termId",
+                                            "value": "2026-2"
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "status",
+                                            "value": "PENDING"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "[\n  {\n    \"id\": \"E-2026-00123\",\n    \"studentId\": \"S-10245\",\n    \"programId\": \"P-ISW\",\n    \"termId\": \"2026-2\",\n    \"courses\": [\n      \"ISWZ3104\",\n      \"ISWZ2201\",\n      \"MATZ1105\"\n    ],\n    \"status\": \"PENDING\",\n    \"createdAt\": \"2026-10-29T14:30:00Z\",\n    \"updatedAt\": \"2026-10-29T14:30:00Z\"\n  },\n  {\n    \"id\": \"E-2026-00123\",\n    \"studentId\": \"S-10245\",\n    \"programId\": \"P-ISW\",\n    \"termId\": \"2026-2\",\n    \"courses\": [\n      \"ISWZ3104\",\n      \"ISWZ2201\",\n      \"MATZ1105\"\n    ],\n    \"status\": \"PENDING\",\n    \"createdAt\": \"2026-10-29T14:30:00Z\",\n    \"updatedAt\": \"2026-10-29T14:30:00Z\"\n  }\n]",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "c1f38d0d-245f-4c5c-9a4a-ce2fa2397a14",
+                            "name": "Filtro inválido",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "enrollments"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "studentId",
+                                            "value": "S-10245"
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "termId",
+                                            "value": "2026-2"
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "status",
+                                            "value": "PENDING"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"code\": \"VALIDATION_ERROR\",\n  \"message\": \"Invalid status value: PAGADO\",\n  \"correlationId\": \"ab23f8b1-91c2-45dc\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "d564a49f-2096-4ae8-8da1-a765cf024985",
+                            "name": "Falla inesperada del servicio",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "enrollments"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "studentId",
+                                            "value": "S-10245"
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "termId",
+                                            "value": "2026-2"
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "status",
+                                            "value": "PENDING"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"code\": \"INTERNAL_ERROR\",\n  \"message\": \"An unexpected error occurred\",\n  \"correlationId\": \"ab23f8b1-91c2-45dc\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "name": "{enrollmentId}",
+                    "description": "",
+                    "item": [
+                        {
+                            "id": "c062eeac-9195-482d-99dd-cecf525c85d0",
+                            "name": "Consultar una matrícula",
+                            "request": {
+                                "name": "Consultar una matrícula",
+                                "description": {},
+                                "url": {
+                                    "path": [
+                                        "enrollments",
+                                        ":enrollmentId"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "type": "any",
+                                            "value": "E-2026-00123",
+                                            "key": "enrollmentId",
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {},
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "2deb0641-563f-46db-b8ae-10bc6cb7f5b8",
+                                    "name": "Matrícula encontrada",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "enrollments",
+                                                ":enrollmentId"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {}
+                                    },
+                                    "status": "OK",
+                                    "code": 200,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"id\": \"E-2026-00123\",\n  \"studentId\": \"S-10245\",\n  \"programId\": \"P-ISW\",\n  \"termId\": \"2026-2\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\",\n    \"MATZ1105\"\n  ],\n  \"status\": \"PENDING\",\n  \"createdAt\": \"2026-10-29T14:30:00Z\",\n  \"updatedAt\": \"2026-10-29T14:30:00Z\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                },
+                                {
+                                    "id": "8b6efc2d-bd4c-4295-afc1-68efe779491c",
+                                    "name": "La matrícula no existe",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "enrollments",
+                                                ":enrollmentId"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {}
+                                    },
+                                    "status": "Not Found",
+                                    "code": 404,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"code\": \"ENROLLMENT_NOT_FOUND\",\n  \"message\": \"Enrollment E-2026-00123 does not exist\",\n  \"correlationId\": \"ab23f8b1-91c2-45dc\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                },
+                                {
+                                    "id": "b6c34565-958c-47a6-92ac-d24fae71e44e",
+                                    "name": "Falla inesperada del servicio",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "enrollments",
+                                                ":enrollmentId"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {}
+                                    },
+                                    "status": "Internal Server Error",
+                                    "code": 500,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"code\": \"INTERNAL_ERROR\",\n  \"message\": \"An unexpected error occurred\",\n  \"correlationId\": \"ab23f8b1-91c2-45dc\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        },
+                        {
+                            "id": "d9441983-8968-48e3-922b-517114cb915c",
+                            "name": "Modificar parcialmente una matrícula",
+                            "request": {
+                                "name": "Modificar parcialmente una matrícula",
+                                "description": {},
+                                "url": {
+                                    "path": [
+                                        "enrollments",
+                                        ":enrollmentId"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "type": "any",
+                                            "value": "E-2026-00123",
+                                            "key": "enrollmentId",
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "PATCH",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"status\": \"CONFIRMED\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\"\n  ]\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "c2c1390a-7171-43fe-bd66-d6366a8f388f",
+                                    "name": "Matrícula actualizada",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "enrollments",
+                                                ":enrollmentId"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "PATCH",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"status\": \"CONFIRMED\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\"\n  ]\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "OK",
+                                    "code": 200,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"id\": \"E-2026-00123\",\n  \"studentId\": \"S-10245\",\n  \"programId\": \"P-ISW\",\n  \"termId\": \"2026-2\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\",\n    \"MATZ1105\"\n  ],\n  \"status\": \"PENDING\",\n  \"createdAt\": \"2026-10-29T14:30:00Z\",\n  \"updatedAt\": \"2026-10-29T14:30:00Z\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                },
+                                {
+                                    "id": "333155cc-f572-43cc-81ca-8ca1b533c5d8",
+                                    "name": "La matrícula no existe",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "enrollments",
+                                                ":enrollmentId"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "PATCH",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"status\": \"CONFIRMED\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\"\n  ]\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "Not Found",
+                                    "code": 404,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"code\": \"ENROLLMENT_NOT_FOUND\",\n  \"message\": \"Enrollment E-2026-00123 does not exist\",\n  \"correlationId\": \"ab23f8b1-91c2-45dc\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                },
+                                {
+                                    "id": "6c5907cf-9691-419e-b76f-e745de4199a1",
+                                    "name": "Materia sin cupo",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "enrollments",
+                                                ":enrollmentId"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "PATCH",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"status\": \"CONFIRMED\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\"\n  ]\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                    "code": 422,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"code\": \"COURSE_FULL\",\n  \"message\": \"Course ISWZ3104 has no available seats\",\n  \"correlationId\": \"ab23f8b1-91c2-45dc\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                },
+                                {
+                                    "id": "4445c8c7-1895-4317-be8d-9bac1251e85c",
+                                    "name": "Transición de estado inválida",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "enrollments",
+                                                ":enrollmentId"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "PATCH",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"status\": \"CONFIRMED\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\"\n  ]\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                    "code": 422,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"code\": \"INVALID_STATUS_TRANSITION\",\n  \"message\": \"Cannot change status from CANCELLED to CONFIRMED\",\n  \"correlationId\": \"ab23f8b1-91c2-45dc\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                },
+                                {
+                                    "id": "1d1c9ca5-52dd-46fb-85a8-550826a62786",
+                                    "name": "Falla inesperada del servicio",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "enrollments",
+                                                ":enrollmentId"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "PATCH",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"status\": \"CONFIRMED\",\n  \"courses\": [\n    \"ISWZ3104\",\n    \"ISWZ2201\"\n  ]\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "Internal Server Error",
+                                    "code": 500,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"code\": \"INTERNAL_ERROR\",\n  \"message\": \"An unexpected error occurred\",\n  \"correlationId\": \"ab23f8b1-91c2-45dc\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "event": [],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080"
+        }
+    ],
+    "info": {
+        "_postman_id": "4095e82a-b6f8-4577-8b6a-33eed19cff36",
+        "name": "Enrollments API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": {
+            "content": "API de Banner para la gestión de matrículas académicas, consumida por Brightspace y el Sistema Financiero.",
+            "type": "text/plain"
+        }
+    }
+}

@@ -1,0 +1,261 @@
+openapi: 3.0.3
+info:
+  title: Enrollments API
+  version: 1.0.0
+  description: API de Banner para la gestión de matrículas académicas, consumida por Brightspace y el Sistema Financiero.
+servers:
+  - url: http://localhost:8080
+paths:
+  /enrollments:
+    post:
+      summary: Crear una matrícula
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrollmentCreate'
+      responses:
+        '201':
+          description: Matrícula creada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Enrollment'
+        '400':
+          description: Datos inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: VALIDATION_ERROR
+                message: Field studentId is required
+                correlationId: ab23f8b1-91c2-45dc
+        '409':
+          description: El estudiante ya está matriculado en el periodo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: ALREADY_ENROLLED
+                message: Student S-10245 already has an enrollment in term 2026-2
+                correlationId: ab23f8b1-91c2-45dc
+        '500':
+          $ref: '#/components/responses/InternalError'
+    get:
+      summary: Buscar matrículas
+      parameters:
+        - name: studentId
+          in: query
+          required: false
+          schema:
+            type: string
+          example: S-10245
+        - name: termId
+          in: query
+          required: false
+          schema:
+            type: string
+          example: "2026-2"
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [PENDING, CONFIRMED, CANCELLED]
+          example: PENDING
+      responses:
+        '200':
+          description: Lista de matrículas (vacía si no hay coincidencias)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Enrollment'
+        '400':
+          description: Filtro inválido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: VALIDATION_ERROR
+                message: "Invalid status value: PAGADO"
+                correlationId: ab23f8b1-91c2-45dc
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /enrollments/{enrollmentId}:
+    get:
+      summary: Consultar una matrícula
+      parameters:
+        - name: enrollmentId
+          in: path
+          required: true
+          schema:
+            type: string
+          example: E-2026-00123
+      responses:
+        '200':
+          description: Matrícula encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Enrollment'
+        '404':
+          description: La matrícula no existe
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: ENROLLMENT_NOT_FOUND
+                message: Enrollment E-2026-00123 does not exist
+                correlationId: ab23f8b1-91c2-45dc
+        '500':
+          $ref: '#/components/responses/InternalError'
+    patch:
+      summary: Modificar parcialmente una matrícula
+      parameters:
+        - name: enrollmentId
+          in: path
+          required: true
+          schema:
+            type: string
+          example: E-2026-00123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrollmentUpdate'
+      responses:
+        '200':
+          description: Matrícula actualizada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Enrollment'
+        '404':
+          description: La matrícula no existe
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: ENROLLMENT_NOT_FOUND
+                message: Enrollment E-2026-00123 does not exist
+                correlationId: ab23f8b1-91c2-45dc
+        '422':
+          description: El cambio viola una regla de negocio
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                courseFull:
+                  summary: Materia sin cupo
+                  value:
+                    code: COURSE_FULL
+                    message: Course ISWZ3104 has no available seats
+                    correlationId: ab23f8b1-91c2-45dc
+                invalidTransition:
+                  summary: Transición de estado inválida
+                  value:
+                    code: INVALID_STATUS_TRANSITION
+                    message: Cannot change status from CANCELLED to CONFIRMED
+                    correlationId: ab23f8b1-91c2-45dc
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+components:
+  responses:
+    InternalError:
+      description: Falla inesperada del servicio
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: INTERNAL_ERROR
+            message: An unexpected error occurred
+            correlationId: ab23f8b1-91c2-45dc
+  schemas:
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+          example: COURSE_FULL
+        message:
+          type: string
+          example: Course ISWZ3104 has no available seats
+        correlationId:
+          type: string
+          example: ab23f8b1-91c2-45dc
+    EnrollmentCreate:
+      type: object
+      required: [studentId, programId, termId, courses]
+      properties:
+        studentId:
+          type: string
+          example: S-10245
+        programId:
+          type: string
+          example: P-ISW
+        termId:
+          type: string
+          example: "2026-2"
+        courses:
+          type: array
+          items:
+            type: string
+          example: [ISWZ3104, ISWZ2201, MATZ1105]
+    Enrollment:
+      type: object
+      required: [id, studentId, programId, termId, courses, status, createdAt]
+      properties:
+        id:
+          type: string
+          example: E-2026-00123
+        studentId:
+          type: string
+          example: S-10245
+        programId:
+          type: string
+          example: P-ISW
+        termId:
+          type: string
+          example: "2026-2"
+        courses:
+          type: array
+          items:
+            type: string
+          example: [ISWZ3104, ISWZ2201, MATZ1105]
+        status:
+          type: string
+          enum: [PENDING, CONFIRMED, CANCELLED]
+          example: PENDING
+        createdAt:
+          type: string
+          format: date-time
+          example: "2026-10-29T14:30:00Z"
+        updatedAt:
+          type: string
+          format: date-time
+          example: "2026-10-29T14:30:00Z"
+    EnrollmentUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [PENDING, CONFIRMED, CANCELLED]
+          example: CONFIRMED
+        courses:
+          type: array
+          items:
+            type: string
+          example: [ISWZ3104, ISWZ2201]
